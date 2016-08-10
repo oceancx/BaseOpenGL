@@ -798,49 +798,49 @@ uint8* MapHandler(uint8* Buffer, uint32 inSize, uint32* outSize)
 }
 
 
-int main(){
-	ReadGameMap *map = new ReadGameMap();
-	string filename ="1001.map";
-	cout<<filename<<endl;
-	map->LoadMap(filename);
-	uint32 UnitTotal=map->GetSubMapTotal();				// 地图的单元总数
-	uint32 m_MapWidth=map->GetMapWidth();				// 地图的宽度
-	uint32 m_MapHeight=map->GetMapHeight();				// 地图的高度
-	uint32 m_SubMapWidth=map->GetSubMapWidth();			// 子地图的宽度
-	uint32 m_SubMapHeight=map->GetSubMapHeight();		// 子地图的高度
-	uint32 m_SubMapRowNum=map->GetSubMapRowNum();		// 子地图的行数量
-	uint32 m_SubMapColNum=map->GetSubMapColNum();		// 子地图的列数量
-	uint32 m_SubMapTotal=map->GetSubMapTotal();			// 子地图的总数
-
-	uint32 bmpsize = m_SubMapWidth*m_SubMapHeight*m_SubMapTotal; // 得到大地图的像素大小
-	uint16 *m_BmpData = new uint16[bmpsize];
-	
-	// 循环处理所有的地图单元
-	for (uint32 i=0; i< UnitTotal%37; i++)
-	{	
-		MapData jd;
-		map->ReadUnit(i); // 读取i单元的数据到内存
-		jd=map->GetJpegData(); // 从内存中读取JPEG的数据
-
-		uint32 TempSize = 0;
-		uint8* jpgdata;
-
-
-		// 处理地图JPEG数据为标准的JPEG数据
-		jpgdata	= MapHandler(jd.Data,jd.Size,&TempSize);
-		
-		int ss=i;
-	    char temp[64];
-		sprintf(temp, "filename%d.jpg", ss);
-		string jpgname(temp);
-
-		ofstream of(jpgname,ios::out|ios::binary);
-		of.write((char*)jpgdata,TempSize);
-		 cout<<TempSize<<endl;
-		of.close();
-		
-
-	}
-	
-	return 0;
-}
+//int main(){ 
+//	ReadGameMap *map = new ReadGameMap();
+//	string filename ="1001.map";
+//	cout<<filename<<endl;
+//	map->LoadMap(filename);
+//	uint32 UnitTotal=map->GetSubMapTotal();				// 地图的单元总数
+//	uint32 m_MapWidth=map->GetMapWidth();				// 地图的宽度
+//	uint32 m_MapHeight=map->GetMapHeight();				// 地图的高度
+//	uint32 m_SubMapWidth=map->GetSubMapWidth();			// 子地图的宽度
+//	uint32 m_SubMapHeight=map->GetSubMapHeight();		// 子地图的高度
+//	uint32 m_SubMapRowNum=map->GetSubMapRowNum();		// 子地图的行数量
+//	uint32 m_SubMapColNum=map->GetSubMapColNum();		// 子地图的列数量
+//	uint32 m_SubMapTotal=map->GetSubMapTotal();			// 子地图的总数
+//
+//	uint32 bmpsize = m_SubMapWidth*m_SubMapHeight*m_SubMapTotal; // 得到大地图的像素大小
+//	uint16 *m_BmpData = new uint16[bmpsize];
+//	
+//	// 循环处理所有的地图单元
+//	for (uint32 i=0; i< UnitTotal%37; i++)
+//	{	
+//		MapData jd;
+//		map->ReadUnit(i); // 读取i单元的数据到内存
+//		jd=map->GetJpegData(); // 从内存中读取JPEG的数据
+//
+//		uint32 TempSize = 0;
+//		uint8* jpgdata;
+//
+//
+//		// 处理地图JPEG数据为标准的JPEG数据
+//		jpgdata	= MapHandler(jd.Data,jd.Size,&TempSize);
+//		
+//		int ss=i;
+//	    char temp[64];
+//		sprintf(temp, "filename%d.jpg", ss);
+//		string jpgname(temp);
+//
+//		ofstream of(jpgname,ios::out|ios::binary);
+//		of.write((char*)jpgdata,TempSize);
+//		 cout<<TempSize<<endl;
+//		of.close();
+//		
+//
+//	}
+//	
+//	return 0;
+//}

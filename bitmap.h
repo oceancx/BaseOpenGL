@@ -1,3 +1,5 @@
+#ifndef __BITMAPHEADER
+#define __BITMAPHEADER
 #include<iostream>
 #include<fstream>
 #include<cstdlib>
@@ -81,5 +83,6 @@ typedef struct BITMAP_FILE_TAG{
         uint8 ImageDescruptor;		// 图像描述字符字节(默认:0，不支持16bit 565格式)
     };
 #pragma pack(pop)//恢复对齐状态
+#endif
     
-int Load_Bitmap_File(BITMAP_FILE_PTR bitmap,char * filename);
+//int Load_Bitmap_File(BITMAP_FILE_PTR bitmap,char * filename);
